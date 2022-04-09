@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +25,18 @@ Route::get('/welcome', function () {
 Route::get('/', function () {
     return view('welcome');
 });
+
+// 3- Call Controller Function
+Route::get('/', [HomeController::class,'index'])->name('home');
+
+// 4- Route-> Controller->View
+Route::get('/test', [HomeController::class,'test'])->name('test');
+// 5- Route with parameters
+Route::get('/param/{id}/{number}', [HomeController::class,'param'])->name('param');
+// 6- Route with post
+Route::post('/save', [HomeController::class,'save'])->name('save');
+
+
 
 
 Route::middleware([
